@@ -16,5 +16,6 @@ public interface UserService {
      * @param userName
      * @return
      */
-    User findByName(String userName);
+	User findUserByName(String userName);
+    City findCityByName(String userName);
 }

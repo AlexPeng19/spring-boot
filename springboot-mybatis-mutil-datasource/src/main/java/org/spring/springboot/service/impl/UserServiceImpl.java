@@ -23,10 +23,13 @@ public class UserServiceImpl implements UserService {
     private CityDao cityDao; // 从数据源
 
     @Override
-    public User findByName(String userName) {
-        User user = userDao.findByName(userName);
-        City city = cityDao.findByName("shanghai");
-        user.setCity(city);
+    public User findUserByName(String userName) {
+        User user = userDao.findUserByName(userName);
         return user;
+    }
+    @Override
+    public City findCityByName(String cityName) {
+    	 City city = cityDao.findCityByName(cityName);
+    	return city;
     }
 }

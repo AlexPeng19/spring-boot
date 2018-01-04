@@ -16,26 +16,26 @@ import javax.sql.DataSource;
 
 @Configuration
 // 扫描 Mapper 接口并容器管理
-@MapperScan(basePackages = ClusterDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "clusterSqlSessionFactory")
+@MapperScan(basePackages = ClusterDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "cluster2SqlSessionFactory")
 public class ClusterDataSourceConfig {
 
     // 精确到 cluster 目录，以便跟其他数据源隔离
     static final String PACKAGE = "org.spring.springboot.dao.cluster";
     static final String MAPPER_LOCATION = "classpath:mapper/cluster/*.xml";
 
-    @Value("${cluster.datasource.url}")
+    @Value("${trafodion.datasource.url}")
     private String url;
 
-    @Value("${cluster.datasource.username}")
+    @Value("${trafodion.datasource.username}")
     private String user;
 
-    @Value("${cluster.datasource.password}")
+    @Value("${trafodion.datasource.password}")
     private String password;
 
-    @Value("${cluster.datasource.driverClassName}")
+    @Value("${trafodion.datasource.driverClassName}")
     private String driverClass;
 
-    @Bean(name = "clusterDataSource")
+    @Bean(name = "clusterDataSource1")
     public DataSource clusterDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(driverClass);
@@ -50,8 +50,8 @@ public class ClusterDataSourceConfig {
         return new DataSourceTransactionManager(clusterDataSource());
     }
 
-    @Bean(name = "clusterSqlSessionFactory")
-    public SqlSessionFactory clusterSqlSessionFactory(@Qualifier("clusterDataSource") DataSource clusterDataSource)
+    @Bean(name = "cluster2SqlSessionFactory")
+    public SqlSessionFactory cluster1SqlSessionFactory(@Qualifier("clusterDataSource1") DataSource clusterDataSource)
             throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(clusterDataSource);

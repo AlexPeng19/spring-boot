@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 
 @Configuration
 // 扫描 Mapper 接口并容器管理
-@MapperScan(basePackages = MasterDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "masterSqlSessionFactory")
+@MapperScan(basePackages = MasterDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "master1SqlSessionFactory")
 public class MasterDataSourceConfig {
 
     // 精确到 master 目录，以便跟其他数据源隔离
@@ -53,9 +53,9 @@ public class MasterDataSourceConfig {
         return new DataSourceTransactionManager(masterDataSource());
     }
 
-    @Bean(name = "masterSqlSessionFactory")
+    @Bean(name = "master1SqlSessionFactory")
     @Primary
-    public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource masterDataSource)
+    public SqlSessionFactory master1SqlSessionFactory(@Qualifier("masterDataSource") DataSource masterDataSource)
             throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(masterDataSource);

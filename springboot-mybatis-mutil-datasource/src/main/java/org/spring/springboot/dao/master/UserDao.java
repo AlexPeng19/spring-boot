@@ -18,5 +18,5 @@ public interface UserDao {
      * @param userName
      * @return
      */
-    User findByName(@Param("userName") String userName);
+    User findUserByName(@Param("userName") String userName);
 }

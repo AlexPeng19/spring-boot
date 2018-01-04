@@ -26,9 +26,21 @@ public class UserRestController {
      * @param userName
      * @return
      */
+    @RequestMapping(value = "/api/hello", method = RequestMethod.GET)
+    public String helloWorld() {
+    	return "\n Hello World!";
+    }
+    
+    
     @RequestMapping(value = "/api/user", method = RequestMethod.GET)
-    public User findByName(@RequestParam(value = "userName", required = true) String userName) {
-        return userService.findByName(userName);
+    public User findUserByName(@RequestParam(value = "userName", required = true) String userName) {
+    	return userService.findUserByName(userName);
+    }
+    
+    
+    @RequestMapping(value = "/api/city", method = RequestMethod.GET)
+    public City findCityByName(@RequestParam(value = "cityName", required = true) String cityName) {
+        return userService.findCityByName(cityName);
     }
 
 }
