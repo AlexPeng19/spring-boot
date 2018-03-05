@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>angularjs</title>
+<script src="//cdn.bootcss.com/angular.js/1.5.6/angular.min.js"></script>
+<script type="text/javascript">
+    var app = angular.module('app', []);
+    app.controller('MainController', function($rootScope, $scope, $http) {
+
+       /*  $scope.data = {
+            userName:"tom",
+			password:"cat"
+        }; */
+
+        $scope.register = function() {
+            $http({
+                url : '/register',
+                method : 'POST',
+                data : $scope.data
+            }).success(function(r) {
+                $scope.responseBody = r;
+            });
+
+        }
+    });
+</script>
+</head>
+<body ng-app="app" ng-controller="MainController">
+    User Name: 
+    <input id="user" ng-model="data.userName" />
+    <br /> password:
+    <input id="pwd" ng-model="data.password" />
+    <br /> salary:
+    <input id="salary" ng-model="data.salary" />
+    <br />
+    <input value="register" type="button" ng-click="register()" />
+    <br />
+    <div>{{responseBody}}</div>
+</body>
+</html>
