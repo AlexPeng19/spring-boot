@@ -3,7 +3,7 @@ package org.spring.springboot.web;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.spring.springboot.model.User;
+import org.spring.springboot.domain.User;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloWorldController {
 
-    @RequestMapping("/")
+    @RequestMapping("/hello")
     public String sayHello() {
         return "Hello,World,How are you doing, are you happy!";
     }

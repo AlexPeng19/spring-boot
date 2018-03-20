@@ -1,15 +1,6 @@
-package org.spring.springboot.model;
-
-public class User {
+package org.spring.springboot.domain;
+public class User{
 	private String userName;
-	private String password;
-	private double salary;
-	public double getSalary() {
-		return salary;
-	}
-	public void setSalary(double salary) {
-		this.salary = salary;
-	}
 	public String getUserName() {
 		return userName;
 	}
@@ -22,4 +13,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getSalary() {
+		return salary;
+	}
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+	private String password;
+	private String salary;
 }
