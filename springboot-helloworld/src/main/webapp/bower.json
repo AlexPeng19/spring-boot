@@ -1,0 +1,33 @@
+{
+    "name": "esgyndbmgr",
+    "version": "2.1.0",
+    "authors": [
+	"venkat1m <venkat.muthuswamy@esgyn.com>"
+  ],
+    "description": "EsgynDB Manager",
+    "main": "index.html",
+    "moduleType": [
+	"amd"
+  ],
+    "keywords": [
+	"EsgynDB"
+  ],
+    "ignore": [
+	"**/.*",
+	"node_modules",
+	"bower_components",
+	"test",
+	"tests"
+	
+  ],
+    "dependencies": {
+    "bootstrap":"latest",
+    "backbone": "~1.2.1",
+    "requirejs": "~2.1.18"
+    },
+    "overrides" : {
+    },
+    "resolutions": {
+        "font-awesome": "~4.6.3"
+    }
+}
